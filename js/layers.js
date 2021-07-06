@@ -30,6 +30,15 @@ addLayer("g", {
             description: "Double your robux gain.",
             cost: new Decimal(1),
         },
+        12: {
+            name: "Mastery",
+            description: "Increases gamepass price by how many games you have.",
+            cost: new Decimal(1),
+            effect() {
+                return player[this.layer].points.add(1).pow(0.3)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x." },
+        },
     },
     layerShown(){return true}
 })

@@ -46,6 +46,7 @@ function getPointGen() {
 		gain = player.g.points
 	}
 	if (hasUpgrade('g', 11)) gain = gain.times(2)
+	if (hasUpgrade('g', 12)) gain = gain.times(upgradeEffect('g', 12))
 	return gain
 }
 

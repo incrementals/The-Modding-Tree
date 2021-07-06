@@ -44,7 +44,7 @@ addLayer("g", {
         13: {
             title: "Use free models",
             description: "Lowers robux requirement to make a game.",
-            cost: new Decimal(350),
+            cost: new Decimal(125),
             effect() {
                 return softcap(player[this.layer].points.add(1).pow(0.08),new Decimal(2),0.02)
             },

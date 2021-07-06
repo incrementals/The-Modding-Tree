@@ -12,10 +12,11 @@ addLayer("g", {
     baseResource: "robux", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    softcap: new Decimal(1e6),
     exponent: 0.5, // Prestige currency exponent
     gainMult() {
         let mult = new Decimal(10)
-        if (hasUpgrade('g', 13)) mult = mult.times(upgradeEffect('g', 13))
+        if (hasUpgrade('g', 13)){mult = mult.times(upgradeEffect('g', 13))}
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -36,7 +37,7 @@ addLayer("g", {
             description: "Increases gamepass price by how many games you have.",
             cost: new Decimal(12),
             effect() {
-                return player[this.layer].points.add(1).pow(0.3)
+                return softcap(player[this.layer].points.add(1).pow(0.1),new Decimal(100),0.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x." },
         },
@@ -45,7 +46,7 @@ addLayer("g", {
             description: "Lowers robux requirement to make a game.",
             cost: new Decimal(12),
             effect() {
-                return player[this.layer].points.add(1).pow(0.1)
+                return softcap(player[this.layer].points.add(1).pow(0.05),new Decimal(2),0.02)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x." },
         },

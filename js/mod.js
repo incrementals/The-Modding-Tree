@@ -17,10 +17,10 @@ let VERSION = {
 	name: "Literally nothing",
 }
 
-let changelog = `<h1>Changelog:</h1><br>
+let changelog = `<h1>
+		- Robux gain system overhauled.Changelog:</h1><br>
 	<h3>v0.1 beta release candidate 1</h3><br>
-		- Added first upgrade.<br>
-		- Robux gain system overhauled.`
+		- Added first upgrade.<br>`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -45,8 +45,8 @@ function getPointGen() {
 	if(player.g.points.gte(1)) {
 		gain = player.g.points
 	}
-	if (hasUpgrade('g', 11)) gain = gain.times(2)
-	if (hasUpgrade('g', 12)) gain = gain.times(upgradeEffect('g', 12))
+	if (hasUpgrade('g', 11)){gain = gain.times(2)}
+	if (hasUpgrade('g', 12)){gain = gain.times(upgradeEffect('g', 12))}
 	return gain
 }
 

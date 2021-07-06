@@ -13,14 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
+	num: "0.1-brc1",
 	name: "Literally nothing",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
-		- Added things.<br>
-		- Added stuff.`
+	<h3>v0.1 beta release candidate 1</h3><br>
+		- Added first upgrade.<br>
+		- Robux gain system overhauled.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -42,8 +42,8 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1)
-	if (hasUpgrade('p', 11)) gain = gain.times(2)
+	let gain = player.g.points
+	if (hasUpgrade('g', 11)) gain = gain.times(2)
 	return gain
 }
 

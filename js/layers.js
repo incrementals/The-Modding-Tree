@@ -15,7 +15,7 @@ addLayer("g", {
     softcap: new Decimal(1e6),
     exponent: 0.5, // Prestige currency exponent
     gainMult() {
-        let mult = new Decimal(10)
+        let mult = new Decimal(1)
         if (hasUpgrade('g', 13)){mult = mult.times(upgradeEffect('g', 13))}
         return mult
     },
@@ -28,12 +28,12 @@ addLayer("g", {
     ],
     upgrades: {
         11: {
-            name: "Add gamepasses",
+            title: "Add gamepasses",
             description: "Double your robux gain.",
             cost: new Decimal(1),
         },
         12: {
-            name: "Mastery",
+            title: "Mastery",
             description: "Increases gamepass price by how many games you have.",
             cost: new Decimal(12),
             effect() {
@@ -42,9 +42,9 @@ addLayer("g", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x." },
         },
         13: {
-            name: "Use free models",
+            title: "Use free models",
             description: "Lowers robux requirement to make a game.",
-            cost: new Decimal(12),
+            cost: new Decimal(350),
             effect() {
                 return softcap(player[this.layer].points.add(1).pow(0.05),new Decimal(2),0.02)
             },

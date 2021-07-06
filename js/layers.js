@@ -37,7 +37,7 @@ addLayer("g", {
             description: "Increases gamepass price by how many games you have.",
             cost: new Decimal(12),
             effect() {
-                return softcap(player[this.layer].points.add(1).pow(0.1),new Decimal(100),0.2)
+                return softcap(player[this.layer].points.add(1).pow(0.4),new Decimal(100),0.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x." },
         },
@@ -46,7 +46,7 @@ addLayer("g", {
             description: "Lowers robux requirement to make a game.",
             cost: new Decimal(350),
             effect() {
-                return softcap(player[this.layer].points.add(1).pow(0.05),new Decimal(2),0.02)
+                return softcap(player[this.layer].points.add(1).pow(0.08),new Decimal(2),0.02)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x." },
         },

@@ -53,7 +53,7 @@ addLayer("g", {
         14: {
             title: "Check code",
             description: "Reduce the Free Model softcap power by 12x.",
-            cost: new Decimal(12000),
+            cost: new Decimal(720000),
             effect() {
                 if (hasUpgrade('g', 14)){
                     return 12

@@ -24,7 +24,7 @@ addLayer("g", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "G", description: "G: Reset to create games.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "g", description: "G: Reset to create games.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     upgrades: {
         11: {
@@ -37,7 +37,7 @@ addLayer("g", {
             description: "Increases gamepass price by how many games you have.",
             cost: new Decimal(12),
             effect() {
-                return softcap(player[this.layer].points.add(1).pow(0.4),new Decimal(100),0.2)
+                return softcap(player[this.layer].points.add(1).pow(0.4),new Decimal(100),0.3)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x." },
         },
@@ -46,9 +46,21 @@ addLayer("g", {
             description: "Lowers robux requirement to make a game.",
             cost: new Decimal(125),
             effect() {
-                return softcap(player[this.layer].points.add(1).pow(0.08),new Decimal(2),0.02)
+                return softcap(player[this.layer].points.add(1).pow(0.08),new Decimal(2),0.02*upgradeEffect('g', 14))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x." },
+        },
+        14: {
+            title: "Check code",
+            description: "Reduce the Free Model softcap power by 12x.",
+            cost: new Decimal(12000),
+            effect() {
+                if (hasUpgrade('g', 14)){
+                    return 12
+                }else{
+                    return 1
+                }
+            },
         },
     },
     layerShown(){return true}

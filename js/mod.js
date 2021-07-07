@@ -13,14 +13,18 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1-brc1",
+	num: "0.1-brc2",
 	name: "Literally nothing",
 }
 
 let changelog = `<h1>
-		- Robux gain system overhauled.Changelog:</h1><br>
+		Changelog:</h1><br>
+		<h3>v0.1 beta release candidate 2</h3><br>
+		- 3 new upgrades. <br>
+		- Softcaps for 2 upgrades
 	<h3>v0.1 beta release candidate 1</h3><br>
-		- Added first upgrade.<br>`
+		- Added first upgrade.<br>
+		- Robux gain system overhauled.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 

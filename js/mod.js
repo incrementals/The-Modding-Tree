@@ -13,13 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1-brc3-pre1",
+	num: "0.1-3/1/1",
 	name: "Layers of Players",
 }
 
 let changelog = `<h1>
 		Changelog:</h1><br>
-		<h2>v0.1 beta release candidate 3 prerelease 1</h2><br>
+		<h5>v0.1 beta release candidate 3 prerelease 1 patch 1</h5><br>
+		- Patch to players layer where it did not give more Robux. <br>
+		<h4>v0.1 beta release candidate 3 prerelease 1</h4><br>
 		- Players layer!!! <br>
 		- Multiplies robux gain. <br>
 		<h3>v0.1 beta release candidate 2</h3><br>
@@ -54,6 +56,7 @@ function getPointGen() {
 	}
 	if (hasUpgrade('g', 11)){gain = gain.times(2)}
 	if (hasUpgrade('g', 12)){gain = gain.times(upgradeEffect('g', 12))}
+	gain = gain.times(layers.p.effect())
 	return gain
 }
 

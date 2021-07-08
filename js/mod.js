@@ -13,12 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1-brc2",
-	name: "Literally nothing",
+	num: "0.1-brc3-pre1",
+	name: "Layers of Players",
 }
 
 let changelog = `<h1>
 		Changelog:</h1><br>
+		<h2>v0.1 beta release candidate 3 prerelease 1</h2><br>
+		- Players layer!!! <br>
+		- Multiplies robux gain. <br>
 		<h3>v0.1 beta release candidate 2</h3><br>
 		- 3 new upgrades. <br>
 		- Softcaps for 2 upgrades <br>

@@ -6,6 +6,7 @@ addLayer("g", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+    branches: ["p"],
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "games", // Name of prestige currency
@@ -69,6 +70,17 @@ addLayer("p", {
     name: "players", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "Pl", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    effect(){
+        if(
+            (player[this.layer].points.add(1).pow(1.1)).gte(new Decimal(12000)))
+            {
+                player.p.softcapped = " (softcapped)"}
+            else
+                {player.p.softcapped = ""
+            }
+        return softcap(player[this.layer].points.add(1).pow(1.1),new Decimal(12000),0.3)
+    },
+    effectDescription(){return `increasing your robux creation by x${format(layers[this.layer].effect())}.` + player.p.softcapped},
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
@@ -83,7 +95,7 @@ addLayer("p", {
     resource: "players", // Name of prestige currency
     baseResource: "games", // Name of resource prestige is based on
     baseAmount() {return player.g.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     softcap: new Decimal(1e6),
     exponent: 0.5, // Prestige currency exponent
     gainMult() {
@@ -99,7 +111,7 @@ addLayer("p", {
     ],
     upgrades: {
         11: {
-            title: "Add gamepasses",
+            title: "Advertise your games.",
             description: "Halve your required games to get a player.",
             cost: new Decimal(1),
         },
